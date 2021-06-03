@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<title>全部撤回-百家号</title>
+</head>
+<body>
+	<video id="do" src="" controls="controls" width="100xp"></video><br>
+	<input type="file" id="file" onchange="a()">
+	<button id="but" onclick="chehuis()">获取分辨率</button><hr>
+	<div id="dataid"></div>
+</body>
+<script type="text/javascript">
+function a(){
+	var url = $("#file").val();
+	$("#do")[0].src = url;
+}
+function chehuis(){
+	var a = $("#do");
+	$("#dataid").text("视频分辨率为："+a[0].videoWidth+"*"+a[0].videoHeight);
+}
+</script>
+</html>
