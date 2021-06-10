@@ -1,1 +1,41 @@
-
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<title>获取视频分辨率</title>
+<style>
+  .fileLabel{display: inline-block;width:380px;height: 40px;line-height: 40px;text-align: center;border: 1px solid dodgerblue;border-radius: 5px;background: dodgerblue;cursor: pointer;}
+  .fileInput{display: none;}
+</style>
+</head>
+<body bgcolor="black">
+	<div style="height: 120px;">
+		<video id="video_id" src="" controls="controls" width="120px" height="120px"></video><br>
+	</div>
+	<div style="text-align: center;height: 50px;">
+		<label class="fileLabel" for="upfiles"><font color='floralwhite'>选择校验视频</font></label>
+		<input id="upfiles" type="file" class="fileInput" onchange="getUrl(this.files[0])">
+		<div type="button" id="but" onclick="huoQuFenBianLv()" class="fileLabel"><font color='floralwhite'>获取视频分辨率</font></div>
+	</div>
+	<div style="height: 1px;background-color: #1E90FF;"></div>
+	<div id="dataid"></div>
+</body>
+<script type="text/javascript">
+function getUrl(file){
+	var url=null
+	if(window.createObjectURL!=undefined){ // basic  
+	    url=window.createObjectURL(file)  
+	}else if(window.URL!=undefined){ // mozilla(firefox)  
+	    url=window.URL.createObjectURL(file)  
+	} else if(window.webkitURL!=undefined){ // webkit or chrome  
+	    url=window.webkitURL.createObjectURL(file)  
+	}  
+	$("#video_id")[0].src = url;
+}
+function huoQuFenBianLv(){
+	var a = $("#video_id");
+	$("#dataid").html("<font color='floralwhite'>视频分辨率为："+a[0].videoWidth+"*"+a[0].videoHeight+"</font>"+"<font size='4' color='seagreen'><b>✓</b></font>");
+}
+</script>
+</html>
