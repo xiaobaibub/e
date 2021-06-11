@@ -3,10 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://xiaobaibub.github.io/e/layer.js"></script>
 <title>获取视频分辨率</title>
 <style>
   .fileLabel{display: inline-block;width:380px;height: 40px;line-height: 40px;text-align: center;border: 1px solid dodgerblue;border-radius: 5px;background: dodgerblue;cursor: pointer;}
   .fileInput{display: none;}
+  .inputcss{width:380px;height: 40px;line-height: 40px;border: 1px solid dodgerblue;border-radius: 5px;background: #F2F2F2;}
 </style>
 </head>
 <body bgcolor="black">
@@ -20,8 +22,27 @@
 	</div>
 	<div style="height: 1px;background-color: #1E90FF;"></div>
 	<div id="dataid"></div>
+	<div id="login" style="display: none;">
+		<form>
+			<div style="text-align: center;padding: 10px;">
+				<li style="list-style:none;height: 50px;"><input type="text" class="inputcss" id="userName"/></li>
+				<li style="list-style:none;height: 50px;"><input type="password" class="inputcss" id="password"/></li>
+				<div onclick="toLogin()" type="submit" class="fileLabel">登录</div>
+			</div>
+		</form>
+	</div>
 </body>
 <script type="text/javascript">
+$(function(){
+	var login = $("#login");
+	layer.open({
+	  title: '登录',
+	  type: 1,
+	  closeBtn: 0,
+	  area: ['500px', '260px'], //宽高
+	  content: login
+	});
+});
 function getUrl(file){
 	var url=null
 	if(window.createObjectURL!=undefined){ // basic  
@@ -36,6 +57,16 @@ function getUrl(file){
 function huoQuFenBianLv(){
 	var a = $("#video_id");
 	$("#dataid").html("<font color='floralwhite'>视频分辨率为："+a[0].videoWidth+"*"+a[0].videoHeight+"</font>"+"<font size='4' color='seagreen'><b>✓</b></font>");
+}
+function toLogin(){
+	var username = $("#userName").val();
+	var password = $("#password").val();
+	if(username!="" && password!=""){
+		layer.msg("登录成功！");
+		layer.closeAll();
+	}else{
+		layer.msg("密码或用户名错误！");
+	}
 }
 </script>
 </html>
