@@ -25,8 +25,8 @@
 	<div id="login" style="display: none;">
 		<form>
 			<div style="text-align: center;padding: 10px;">
-				<li style="list-style:none;height: 50px;"><input type="text" class="inputcss" id="userName"/></li>
-				<li style="list-style:none;height: 50px;"><input type="password" class="inputcss" id="password"/></li>
+				<li style="list-style:none;height: 50px;"><input type="text" class="inputcss" id="userName" placeholder="请输入用户名"/></li>
+				<li style="list-style:none;height: 50px;"><input type="password" class="inputcss" id="password" placeholder="请输入密码"/></li>
 				<div onclick="toLogin()" type="submit" class="fileLabel">登录</div>
 			</div>
 		</form>
@@ -65,7 +65,7 @@ function toLogin(){
 		layer.msg("登录成功！");
 		layer.closeAll();
 	}else{
-		layer.msg("密码或用户名错误！");
+		layer.msg("用户名或密码错误！");
 	}
 }
 </script>
